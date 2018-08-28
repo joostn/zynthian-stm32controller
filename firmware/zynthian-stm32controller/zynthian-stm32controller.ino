@@ -1,7 +1,8 @@
 
 #include <USBComposite.h>
 
-// For linear taper potmeter:
+// For linear taper potmeter set to false, for logarithmic potmeter
+// (called 'B taper') set to true:
 const bool s_bcurve = false;
 // knee of the correction curve (only used if s_bcurve == true):
 const int s_bcurve_knee_src = 640;
