@@ -147,7 +147,7 @@ public:
 					snd_mixer_selem_get_id(m_Elem, sid);
 					elemname = snd_mixer_selem_id_get_name(sid);
 				}
-				cout << "Using mixer element: " << elemname << "\n";
+				std::cout << "Using mixer element: " << elemname << "\n";
 			}
 		}
 		catch(...)

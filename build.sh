@@ -2,6 +2,10 @@
 
 set -e
 
+if [ ! -f "/usr/include/libudev.h" ]; then
+    apt-get install libudev-dev
+fi
+
 if [ ! -d "host" ]; then
     echo "Run this script in the folder containing build.sh" >&2
     exit 1
