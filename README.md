@@ -14,6 +14,7 @@ Use a potmeter somewhere between 5k and 20k. Connet the wiper to A0. Connect the
 
 # Install firmware
 First the stm32duino bootloader must be flashed to the microcontroller. This is a bit involved and requires an SWD programmer, or a USB - serial converter. See 
+
 http://coytbarringer.com/programming-stm32f103-blue-pill-using-usb-bootloader-platformio/
 or
 https://github.com/rogerclarkmelbourne/Arduino_STM32/wiki/Flashing-Bootloader-for-BluePill-Boards
@@ -23,12 +24,12 @@ Next, install the Arduino software (http://arduino.cc)
 In Arduino, install the Arduino_STM32 libraries:
 https://github.com/rogerclarkmelbourne/Arduino_STM32/wiki/Installation
 
-Launch Arduino and open [zythian-stm32controller.ino](./firmware/zythian-stm32controller/zythian-stm32controller.ino).
+Launch Arduino and open [zynthian-stm32controller.ino](./firmware/zynthian-stm32controller/zynthian-stm32controller.ino).
 
-Tools - Board: Generic STM32F103C
-Tools - Variant: 64k Flash
-Tools - CPU speed: 48 MHz
-Tools - upload method: STM32duino bootloader
+* Tools - Board: Generic STM32F103C
+* Tools - Variant: 64k Flash
+* Tools - CPU speed: 48 MHz
+* Tools - upload method: STM32duino bootloader
 
 Do Sketch - Verify/Compile to build the firmware.
 
@@ -42,7 +43,7 @@ Download done.
 ```
 
 # Install host software
-Connect via SSH to your zythian box and enter:
+Connect via SSH to your zynthian box and enter:
 
 ```
 cd /zynthian
