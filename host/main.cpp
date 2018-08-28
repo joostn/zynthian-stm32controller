@@ -122,17 +122,20 @@ public:
 			{
 				// find the first elem with playback volume control:
 				snd_mixer_elem_t *elem = nullptr;
+				snd_mixer_selem_id_t *sid;
+				snd_mixer_selem_id_alloca(&sid);
+				int numfound = 0;
 				for (elem = snd_mixer_first_elem(m_Handle); elem; elem = snd_mixer_elem_next(elem))
 				{
+					snd_mixer_selem_get_id(elem, sid);
+					std::string elemname = snd_mixer_selem_id_get_name(sid);
 					if(snd_mixer_selem_is_active(elem))
 					{
 						if (snd_mixer_selem_has_playback_volume(elem))
 						{
-							if(m_Elem)
-							{
-								throw std::runtime_error("Multiple mixer elements found for controlling playback volume. Please specify which volume control to use. Run amixer -M to get a list.");
-							}
+							std::cout << "Found mixer element: " << elemname << "\n";
 							m_Elem = elem;
+							numfound++;
 						}
 					}
 				}
@@ -140,14 +143,10 @@ public:
 				{
 					throw std::runtime_error("No mixer element found for controlling volume");
 				}
-				std::string elemname;
+				if(numfound > 1)
 				{
-					snd_mixer_selem_id_t *sid;
-					snd_mixer_selem_id_alloca(&sid);
-					snd_mixer_selem_get_id(m_Elem, sid);
-					elemname = snd_mixer_selem_id_get_name(sid);
+					throw std::runtime_error("Multiple mixer elements found for controlling playback volume. Please specify which volume control to use. Run amixer -M to get a list.");
 				}
-				std::cout << "Using mixer element: " << elemname << "\n";
 			}
 		}
 		catch(...)
