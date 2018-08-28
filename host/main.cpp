@@ -129,13 +129,18 @@ public:
 				{
 					snd_mixer_selem_get_id(elem, sid);
 					std::string elemname = snd_mixer_selem_id_get_name(sid);
+					// try to find out if it's a volume control
+					// this works on my HifiBerry clone to find the 'Digital' volume control:
 					if(snd_mixer_selem_is_active(elem))
 					{
 						if (snd_mixer_selem_has_playback_volume(elem))
 						{
-							std::cout << "Found mixer element: " << elemname << "\n";
-							m_Elem = elem;
-							numfound++;
+							if(snd_mixer_selem_has_playback_switch(elem))
+							{
+								std::cout << "Found mixer element: " << elemname << "\n";
+								m_Elem = elem;
+								numfound++;
+							}
 						}
 					}
 				}
@@ -248,7 +253,8 @@ int main(int argc, char* argv[])
 							throw std::runtime_error("expecting at least 4 bytes");
 						}
 						// device version; we can used this in the future to distinguish revisions:
-						[[maybe_unused]] int version = ((int)buf[0]) | (((int)buf[1]) << 8);
+						int version = ((int)buf[0]) | (((int)buf[1]) << 8);
+						(void) version; // unused
 						int volume = ((int)buf[2]) | (((int)buf[3]) << 8);
 #if WITHALSA
 						mixer.SetVolume(volume);
