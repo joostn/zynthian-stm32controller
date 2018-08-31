@@ -57,7 +57,7 @@ Adjust the potentiometer; this should move the master volume.
 If it's not working, execute  ```/zynthian/zynthian-stm32controller/build/zynthian-stm32controller-host``` and see if you get any error messages.
 
 # Compile the firmware
-Pre-build binary firmware is included. But if you want to compile your own:
+Pre-built binary firmware is included. But if you want to compile your own:
 
 Install the Arduino software (http://arduino.cc)
 
@@ -81,3 +81,15 @@ Download	[======================== ]  97%        20908 bytes
 Download	[=========================] 100%        20908 bytes
 Download done.
 ```
+# Internal USB connection
+To connect the microcontroller inside the zynthian box I've cut a USB cable in two and soldered as follows:
+![Image](doc/internalusb.jpg)
+
+```
+- PP45   - green - D+
+- PP44   - white - D-
+- shield - black - GNS
+- PP27   - red   - +5V
+```
+
+Fix the cable to the PI with some hot glue. This is the topmost of the 2 stacked USB ports, make sure nothing is connected externally.
