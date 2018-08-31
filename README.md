@@ -10,7 +10,7 @@ The board (also known as the STM32 Blue Pill) can be bought on AliExpress or eba
 
 On most boards a hardware modification is needed, R10 has the wrong value. You can either replace R10 with a 1.5k  resistor (this is a tiny 0604 SMD component), or put an appropriate resistor value (e.g 1.8 kΩ) in between PA12 and 3.3V. See for more information: https://wiki.stm32duino.com/index.php?title=Blue_Pill
 
-Use a potmeter somewhere between 5k and 20k. Connet the wiper to A0. Connect the two outer pins to G and 3.3 respectively. See picture above.
+Use a potmeter somewhere between 5k and 20k. Connect the wiper to A0. Connect the two outer pins to G and 3.3 respectively. See picture above.
 
 # Install firmware
 First the stm32duino bootloader must be flashed to the microcontroller. This is a bit involved and requires an SWD programmer, or a USB - serial converter. See 
