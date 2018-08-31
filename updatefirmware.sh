@@ -7,14 +7,14 @@ if [ ! -f "/usr/bin/dfu-util" ]; then
 fi
 
 CHOICE=$(dialog --clear --backtitle "Flash firmware" --title "Select firmware" --menu "Select firmware to flash::" 15 40 4 \
-1 "For linear potmeter" \
-2 "For logarithmic potmeter" 2>&1 >/dev/tty)
+1 "For linear potentiometer" \
+2 "For logarithmic potentiometer" 2>&1 >/dev/tty)
 clear
 
 if [ $CHOICE = "1" ]; then
-	FIRMWAREFILE=firmware/zynthian-stm32controller/for_linear_potmeter.bin
+	FIRMWAREFILE=firmware/zynthian-stm32controller/for_linear_potentiometer.bin
 elif [ $CHOICE = "2" ]; then
-	FIRMWAREFILE=firmware/zynthian-stm32controller/for_logarithmic_potmeter.bin
+	FIRMWAREFILE=firmware/zynthian-stm32controller/for_logarithmic_potentiometer.bin
 else
 	echo "Invalid input: $CHOICE"
 	exit 1
