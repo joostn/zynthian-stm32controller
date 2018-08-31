@@ -1,5 +1,5 @@
 # zynthian-stm32controller
-This is hardware and software for an I/O expander for Zynthian using an STM32 microcontroller, connected via USB. My main goal was to add a master volume control. The microcontroller has 16 ADC channels and many GPIOs so it could be used to add more controllers.
+This is hardware and software for an I/O expander for Zynthian using an STM32 microcontroller, connected via USB. My main goal was to add a master volume control. The microcontroller has 9 ADC channels and many GPIOs so it could be used to add more controllers.
 
 The current version supports a single potentiometer to control the Alsa mixer volume.
 
@@ -8,7 +8,7 @@ The current version supports a single potentiometer to control the Alsa mixer vo
 # Hardware
 The board (also known as the STM32 Blue Pill) can be bought on AliExpress or ebay from china for less than 2 Euros. Search for 'STM32F103C8T6 module' and see the picture above.
 
-On most boards a hardware modification is needed, R10 has the wrong value. You can either replace R10 with a 1.5k  resistor (this is a tiny 0604 SMD component), or put an appropriate resistor value (e.g 1.8 kΩ) in between PA12 and 3.3V. See for more information: https://wiki.stm32duino.com/index.php?title=Blue_Pill
+On most boards a hardware modification is needed, R10 has the wrong value. You can either replace R10 with a 1.5k  resistor (this is a tiny 0603 SMD component), or put an appropriate resistor value (e.g 1.8 kΩ) in between A12 and 3.3V. See for more information: https://wiki.stm32duino.com/index.php?title=Blue_Pill
 
 Use a potentiometer somewhere between 5k and 20k. Connect the wiper to A0. Connect the two outer pins to G and 3.3 respectively. See picture above.
 
@@ -41,9 +41,9 @@ cd /zynthian/zynthian-stm32controller
 ./updatefirmware.sh
 ```
 
-You can choose between two firmware versions, for a linear potentiometer or a logarithmic potentiometer. Potentiometers for analog volume control often have logarithmic taper; all other potentiometers usually have linear taper.
+You can choose between two firmware versions, for a linear potentiometer or a logarithmic potentiometer. Dedicated potentiometers for analog volume control often have logarithmic taper; any other potentiometers probably has linear taper.
 
-Connect the microcontroller to the Raspberry Pi over USB, or reset the microcontroller board if it was already connected. The is in DFU (firmware update) mode for one second after booting. The update script continues attempting to flash the firmware until successful.
+Connect the microcontroller to the Raspberry Pi over USB, or reset the microcontroller board if it was already connected. The device is in DFU (firmware update) mode for one second after booting. The update script continues attempting to flash the firmware until successful.
 
 # Test
 Open the mixer:
