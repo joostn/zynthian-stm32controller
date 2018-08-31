@@ -86,10 +86,10 @@ To connect the microcontroller inside the zynthian box I've cut a USB cable in t
 ![Image](doc/internalusb.jpg)
 
 ```
-- PP45   - green - D+
-- PP44   - white - D-
-- shield - black - GNS
-- PP27   - red   - +5V
+PP45   - green - D+
+PP44   - white - D-
+shield - black - GND
+PP27   - red   - +5V
 ```
 
 Fix the cable to the PI with some hot glue. This is the topmost of the 2 stacked USB ports, make sure nothing is connected externally.
